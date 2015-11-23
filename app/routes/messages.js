@@ -2,6 +2,8 @@ import Ember from 'ember';
 
 export default Ember.Route.extend({
   model(){
-    return [Ember.object.create({body:"First object"}), Ember.object.create({body:"Please me from the list."})]
+    return Ember.$.getJSON('/api/v1/messages').then(function(response){
+      return response.messages;
+    });
   }
 });
